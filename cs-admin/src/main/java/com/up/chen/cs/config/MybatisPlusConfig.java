@@ -1,13 +1,8 @@
-package com.chen.cs.config;
+package com.up.chen.cs.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
-import com.stylefeng.guns.core.common.constant.DatasourceEnum;
-import com.stylefeng.guns.core.datascope.DataScopeInterceptor;
-import com.stylefeng.guns.core.datasource.DruidProperties;
-import com.stylefeng.guns.core.mutidatasource.DynamicDataSource;
-import com.stylefeng.guns.core.mutidatasource.config.MutiDataSourceProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

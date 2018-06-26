@@ -1,4 +1,4 @@
-package com.chen.cs.config;
+package com.up.chen.cs.config;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
@@ -25,6 +25,7 @@ public class EhCacheConfig {
         ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
         return ehCacheManagerFactoryBean;
     }
+
     @Bean
     public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean){
         return new EhCacheCacheManager(bean.getObject());
