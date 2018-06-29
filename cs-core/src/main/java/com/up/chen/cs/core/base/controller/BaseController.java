@@ -1,6 +1,11 @@
 package com.up.chen.cs.core.base.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.up.chen.cs.core.base.tips.SuccessTip;
+import com.up.chen.cs.core.base.wapper.BaseControllerWarpper;
+import com.up.chen.cs.core.page.PageInfoBT;
+import com.up.chen.cs.core.support.HttpKit;
+import com.up.chen.cs.core.util.FileUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -92,8 +97,6 @@ public class BaseController {
     /**
      * 返回前台文件流
      *
-     * @author fengshuonan
-     * @date 2017年2月28日 下午2:53:19
      */
     protected ResponseEntity<byte[]> renderFile(String fileName, byte[] fileBytes) {
         String dfileName = null;

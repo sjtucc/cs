@@ -18,7 +18,7 @@ public abstract class BaseControllerWarpper {
         this.obj = obj;
     }
 
-    protected Object warp() {
+    public Object warp() {
         if(this.obj instanceof List) {
             List<Map<String, Object>> list = (List<Map<String, Object>>) this.obj;
             for (Map<String, Object> map : list) {

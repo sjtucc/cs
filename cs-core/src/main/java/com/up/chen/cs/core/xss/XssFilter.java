@@ -13,14 +13,17 @@ public class XssFilter implements Filter {
 
     private List<String> urlExclusion = null;
 
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
     }
 
+    @Override
     public void destroy() {
         this.filterConfig = null;
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String servletPath = httpServletRequest.getServletPath();

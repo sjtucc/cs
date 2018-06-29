@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 /**
  * Bean工具类
  *
- * @author Looly
  */
 public class BeanKit {
 
@@ -35,6 +34,10 @@ public class BeanKit {
         return false;
     }
 
+    /**
+     * 判断bean是否有属性编辑器
+     *
+     */
     public static PropertyEditor findEditor(Class<?> type) {
         return PropertyEditorManager.findEditor(type);
     }

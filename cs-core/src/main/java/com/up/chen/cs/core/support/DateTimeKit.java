@@ -82,8 +82,6 @@ public class DateTimeKit {
 	/**
 	 * 当前时间long
 	 *
-	 * @param isNano 是否为高精度时间
-	 * @return 时间
 	 */
 	public static long current(boolean isNano) {
 		return isNano ? System.nanoTime() : System.currentTimeMillis();

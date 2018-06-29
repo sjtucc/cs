@@ -10,12 +10,10 @@ import org.springframework.stereotype.Component;
 * @date 2018/6/26 16:59
 */
 @Component
-@ConfigurationProperties(prefix = "guns.muti-datasource")
+@ConfigurationProperties(prefix = "spring.muti-datasource")
 public class MutiDataSourceProperties {
 
-    private String defaultDataSourceName = "dataSourceGuns";
-
-    private String url = "jdbc:mysql://127.0.0.1:3306/biz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
+    private String url = "jdbc:mysql://127.0.0.1:3306/cs_flowable?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull";
 
     private String username = "root";
 
@@ -24,6 +22,8 @@ public class MutiDataSourceProperties {
     private String driverClassName = "com.mysql.jdbc.Driver";
 
     private String validationQuery = "SELECT 'x'";
+
+    private String defaultDataSourceName = "dataSourceCs";
 
     public void config(DruidDataSource dataSource) {
         dataSource.setUrl(url);
@@ -57,14 +57,6 @@ public class MutiDataSourceProperties {
         this.password = password;
     }
 
-    public String getDefaultDataSourceName() {
-        return defaultDataSourceName;
-    }
-
-    public void setDefaultDataSourceName(String defaultDataSourceName) {
-        this.defaultDataSourceName = defaultDataSourceName;
-    }
-
     public String getDriverClassName() {
         return driverClassName;
     }
@@ -79,5 +71,13 @@ public class MutiDataSourceProperties {
 
     public void setValidationQuery(String validationQuery) {
         this.validationQuery = validationQuery;
+    }
+
+    public String getDefaultDataSourceName() {
+        return defaultDataSourceName;
+    }
+
+    public void setDefaultDataSourceName(String defaultDataSourceName) {
+        this.defaultDataSourceName = defaultDataSourceName;
     }
 }

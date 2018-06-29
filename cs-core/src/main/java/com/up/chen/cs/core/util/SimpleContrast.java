@@ -8,7 +8,6 @@ import java.util.Date;
 /**
  * 对比两个对象的变化的工具类
  *
- * @author fengshuonan
  * @Date 2017/3/31 10:36
  */
 public class SimpleContrast {
@@ -19,8 +18,6 @@ public class SimpleContrast {
     /**
      * 比较两个对象,并返回不一致的信息
      *
-     * @author stylefeng
-     * @Date 2017/5/9 19:34
      */
     public static String contrastObj(Object pojo1, Object pojo2) {
         String str = "";

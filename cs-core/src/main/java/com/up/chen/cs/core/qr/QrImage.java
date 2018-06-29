@@ -3,8 +3,6 @@ package com.up.chen.cs.core.qr;
 /**
  * 二维码图片对象
  *
- * @author fengshuonan
- * @date 2016年12月8日 上午11:37:09
  */
 public class QrImage {
 

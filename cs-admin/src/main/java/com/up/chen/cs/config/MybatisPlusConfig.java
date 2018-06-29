@@ -3,6 +3,8 @@ package com.up.chen.cs.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
+import com.up.chen.cs.core.common.constant.DatasourceEnum;
+import com.up.chen.cs.core.datascope.DataScopeInterceptor;
 import com.up.chen.cs.core.datasource.DruidProperties;
 import com.up.chen.cs.core.mutidatasource.DynamicDataSource;
 import com.up.chen.cs.core.mutidatasource.config.MutiDataSourceProperties;
@@ -24,7 +26,7 @@ import java.util.HashMap;
 */
 @Configuration
 @EnableTransactionManagement(order = 2)//由于引入多数据源，所以让spring事务的aop要在多数据源切换aop的后面
-@MapperScan(basePackages = {"com.stylefeng.guns.modular.*.dao"})
+@MapperScan(basePackages = {"com.up.chen.cs.modular.*.dao"})
 public class MybatisPlusConfig {
 
     @Autowired
@@ -44,9 +46,9 @@ public class MybatisPlusConfig {
     }
 
     /**
-     * guns的数据源
+     * cs的数据源
      */
-    private DruidDataSource dataSourceGuns() {
+    private DruidDataSource dataSourceCs() {
         DruidDataSource dataSource = new DruidDataSource();
         druidProperties.config(dataSource);
         return dataSource;
@@ -56,23 +58,23 @@ public class MybatisPlusConfig {
      * 单数据源连接池配置
      */
     @Bean
-    @ConditionalOnProperty(prefix = "guns", name = "muti--open", havingValue = "false")
+    @ConditionalOnProperty(prefix = "cs", name = "muti--open", havingValue = "false")
     public DruidDataSource singleDatasource() {
-        return dataSourceGuns();
+        return dataSourceCs();
     }
 
     /**
      * 多数据源连接池配置
      */
     @Bean
-    @ConditionalOnProperty(prefix = "guns", name = "muti-datasource-open", havingValue = "true")
+    @ConditionalOnProperty(prefix = "cs", name = "muti-datasource-open", havingValue = "true")
     public DynamicDataSource mutiDataSource() {
 
-        DruidDataSource dataSourceGuns = dataSourceGuns();
+        DruidDataSource dataSourceCs = dataSourceCs();
         DruidDataSource bizDataSource = bizDataSource();
 
         try {
-            dataSourceGuns.init();
+            dataSourceCs.init();
             bizDataSource.init();
         } catch (SQLException sql) {
             sql.printStackTrace();
@@ -80,10 +82,10 @@ public class MybatisPlusConfig {
 
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
         HashMap<Object, Object> hashMap = new HashMap();
-        hashMap.put(DatasourceEnum.DATA_SOURCE_GUNS, dataSourceGuns);
+        hashMap.put(DatasourceEnum.DATA_SOURCE_CS, dataSourceCs);
         hashMap.put(DatasourceEnum.DATA_SOURCE_BIZ, bizDataSource);
         dynamicDataSource.setTargetDataSources(hashMap);
-        dynamicDataSource.setDefaultTargetDataSource(dataSourceGuns);
+        dynamicDataSource.setDefaultTargetDataSource(dataSourceCs);
         return dynamicDataSource;
     }
 

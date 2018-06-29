@@ -16,6 +16,6 @@ public class CsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CsApplication.class, args);
-        logger.info("CsApplication is success!");
+        logger.debug("CsApplication is success!");
     }
 }
