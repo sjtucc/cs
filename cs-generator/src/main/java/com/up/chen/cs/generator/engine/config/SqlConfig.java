@@ -54,7 +54,7 @@ public class SqlConfig {
         menu.setUrl("/" + contextConfig.getBizEnName());
         menu.setNum(99);
 
-        if (parentMenuName.equals("顶级")) {
+        if ("顶级".equals(parentMenuName)) {
             menu.setLevels(1);
         } else {
             menu.setLevels(2);
@@ -115,7 +115,7 @@ public class SqlConfig {
     }
 
     public String[] getPcodeAndPcodes() {
-        if (parentMenuName.equals("顶级")) {
+        if ("顶级".equals(parentMenuName)) {
             return new String[]{"0", ""};
         }
         PreparedStatement preparedStatement = null;

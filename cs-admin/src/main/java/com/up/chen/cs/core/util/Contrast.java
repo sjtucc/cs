@@ -124,7 +124,7 @@ public class Contrast {
                 }
                 String prefix = "get";
                 int prefixLength = 3;
-                if (field.getType().getName().equals("java.lang.Boolean")) {
+                if ("java.lang.Boolean".equals(field.getType().getName())) {
                     prefix = "is";
                     prefixLength = 2;
                 }

@@ -84,8 +84,9 @@ public class ClassKit {
 	 * @return 对象
 	 */
 	public static <T> T newInstance(Class<T> clazz, Object... params) {
-		if (null == clazz)
+		if (null == clazz) {
 			return null;
+		}
 		if (CollectionKit.isEmpty(params)) {
 			return newInstance(clazz);
 		}
