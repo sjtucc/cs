@@ -38,6 +38,7 @@ CREATE TABLE `sys_dept` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='部门表';
 
+
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
@@ -131,6 +132,17 @@ CREATE TABLE `sys_menu` (
   `isopen` int(11) DEFAULT NULL COMMENT '是否打开:    1:打开   0:不打开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+
+-- ----------------------------
+-- Table structure for sys_order
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_order`;
+CREATE TABLE `sys_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `name` varchar(255) DEFAULT NULL COMMENT '订单名称',
+  `version` int(11) DEFAULT NULL COMMENT '版本（乐观锁保留字段）',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
 -- Records of sys_menu
