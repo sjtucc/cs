@@ -20,10 +20,15 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.RequestContextListener;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Properties;
 
 /**
@@ -161,4 +166,33 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         defaultKaptcha.setConfig(config);
         return defaultKaptcha;
     }
+
+    @Bean
+    public LocaleResolver localResolver() {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
+        return slr;
+    }
+
+    /**
+    * @Title:
+    * @Description:
+    * 拦截?lang=en_US，调用localResolvers.setlocale()方法
+    * 可以不设置此拦截器，在登录后执行localeResolver.setLocale(request,response,Locale.ENGLISH);
+    * Controller层使用：LocaleContextHolder.getLocale().equals(Locale.US)
+    * @author chenchen
+    * @date 2018/7/2 11:04
+    */
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
+        return lci;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 }
+

@@ -11,6 +11,7 @@ import com.up.chen.cs.modular.system.model.OperationLog;
 import com.up.chen.cs.modular.system.service.ILoginLogService;
 import com.up.chen.cs.modular.system.warpper.LogWarpper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
