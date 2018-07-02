@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
-* @Description: ADI项目模板生成 引擎
+* @Description: 项目模板生成引擎
 * @author chenchen
 * @date 2018/6/28 9:06
 */

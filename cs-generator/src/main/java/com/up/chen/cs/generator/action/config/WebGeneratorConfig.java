@@ -57,6 +57,7 @@ public class WebGeneratorConfig extends AbstractGeneratorConfig {
         packageConfig.setEntity(genQo.getProjectPackage() + ".modular.system.model");
         packageConfig.setMapper(genQo.getProjectPackage() + ".modular.system.dao");
         packageConfig.setXml(genQo.getProjectPackage() + ".modular.system.dao.mapping");
+        packageConfig.setController(genQo.getProjectPackage() + ".modular.system.controller");
 
         /**
          * 业务代码配置
